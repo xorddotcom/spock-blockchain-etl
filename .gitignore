@@ -50,3 +50,22 @@ ENV/
 
 # etl
 /last_synced_block.txt
+
+node_modules
+blocks.csv
+blocks.json
+contract_addresses.txt
+contracts.csv
+contracts.json
+logs.csv
+logs.json
+receipts.csv
+receipts.json
+token_addresses.txt
+token_transfers.csv
+token_transfers.json
+tokens.csv
+tokens.json
+transaction_hashes.txt
+transactions.csv
+transactions.json
