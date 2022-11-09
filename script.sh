@@ -1,10 +1,13 @@
 # 1000 blocks
 
+START_BLOCK=15914348
+END_BLOCK=15924348 # 15914348 (10,000) & 15923348 (1000)
+
 # export_blocks_and_transactions
 python3 ethereumetl.py export_blocks_and_transactions \
   --provider-uri https://rpc.ankr.com/eth \
-  --start-block 15923348 \
-  --end-block 15924348 \
+  --start-block $START_BLOCK \
+  --end-block $END_BLOCK \
   --blocks-output blocks.csv \
   --transactions-output transactions.csv
 
