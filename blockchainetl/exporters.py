@@ -170,11 +170,12 @@ class JsonLinesItemExporter(BaseItemExporter):
         self.file = file
         kwargs.setdefault('ensure_ascii', not self.encoding)
         # kwargs.setdefault('default', EncodeDecimal)
-        self.encoder = JSONEncoder(default=EncodeDecimal, **kwargs)
+        self.encoder = JSONEncoder(default=EncodeDecimal, indent=2, separators=(', ', ': '), **kwargs)
 
     def export_item(self, item):
         itemdict = dict(self._get_serialized_fields(item))
         data = self.encoder.encode(itemdict) + '\n'
+        print(data)
         self.file.write(to_bytes(data, self.encoding))
 
 
