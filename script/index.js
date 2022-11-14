@@ -4,9 +4,9 @@ const csv = require("csvtojson");
 const fs = require("fs");
 const axios = require("axios");
 
-const START_BLOCK = 15924338; // 15914348 (10,000) & 15923348 (1000)
+const START_BLOCK = 15924347; // 15914348 (10,000) & 15923348 (1000)
 const END_BLOCK = 15924348;
-const BATCH_SIZE = 10;
+const BATCH_SIZE = 1;
 
 async function main() {
   if (END_BLOCK - START_BLOCK <= 0) {
@@ -61,10 +61,11 @@ async function main() {
     fs.writeFileSync("data/output.json", JSON.stringify(jsonFiles, null, 2));
 
     /// 4. send json files to server
-    await axios.post(
-      "http://172.18.0.69:5000/process/blocks",
+    const res = await axios.post(
+      "http://172.18.1.5:5000/process/blocks",
       JSON.stringify(jsonFiles)
     );
+    console.log("res: ", res.data);
 
     startBlock = endBlock;
   }
