@@ -4,9 +4,12 @@ const csv = require("csvtojson");
 const fs = require("fs");
 const axios = require("axios");
 
-const START_BLOCK = 15924347; // 15914348 (10,000) & 15923348 (1000)
-const END_BLOCK = 15924348;
+// start_block -> 12395780 -> 8 may 2021 (bull market)
+// end_block -> start_block + 10,000 (12405780)
+
 const BATCH_SIZE = 1;
+const START_BLOCK = 15924347;
+const END_BLOCK = START_BLOCK + BATCH_SIZE;
 
 async function main() {
   if (END_BLOCK - START_BLOCK <= 0) {

@@ -3,6 +3,9 @@
 # https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca
 set -euo pipefail
 
+# start_block -> 12395780 -> 8 may 2021 (bull market)
+# end_block -> start_block + 10,000 (12405780)
+
 # START_BLOCK=15923348 # 15914348 (10,000) & 15923348 (1000)
 # END_BLOCK=15924348
 
