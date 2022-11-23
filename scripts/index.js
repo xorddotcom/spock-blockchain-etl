@@ -4,8 +4,11 @@ const csv = require("csvtojson");
 const fs = require("fs");
 const axios = require("axios");
 
+// start_block -> 12395780 -> 8 may 2021 (bull market)
+// end_block -> start_block + 10,000 (12405780)
+
 const BATCH_SIZE = 1;
-const START_BLOCK = 15924347;
+const START_BLOCK = 12395780;
 const END_BLOCK = START_BLOCK + BATCH_SIZE;
 
 async function main() {
@@ -56,16 +59,13 @@ async function main() {
 
     Object.keys(jsonFiles).forEach((f) => console.log(f));
 
-    console.log({ jsonFiles })
+    console.log({ jsonFiles });
 
     console.log("-----------------------------------------------------");
     fs.writeFileSync("data/output.json", JSON.stringify(jsonFiles));
 
     /// 4. send json files to server
-    const res = await axios.post(
-      "http://172.18.1.5:5000/process/blocks",
-      jsonFiles
-    );
+    const res = await axios.post("http://127.0.0.1:5000/blocks", jsonFiles);
     console.log("res: ", res.data);
 
     startBlock = endBlock;
